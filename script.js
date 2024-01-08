@@ -31,7 +31,7 @@ form.addEventListener('submit', e => {
             } else {
                 content = cityName
             }
-            return content == cityName.toLowerCase
+            return content == inputVal.toLowerCase()
         })
         if(filteredArray.length > 0) {
             msg.textContent = `You already know weather for ${filteredArray[0].querySelector('.city__name').textContent} ...otherwise be more specific by providing the country code as well`;
@@ -48,7 +48,6 @@ form.addEventListener('submit', e => {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
 
             if(data.cod == '404') {
                 throw new Error(`${data.cod}, ${data.message}`)
